@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<addon scheme="4.0">
+    <id>allow_once</id>
+    <version>4.17.1</version>
+    <priority>2000</priority>
+    <status>active</status>
+    <has_icon>Y</has_icon>
+    <compatibility>
+        <core_version>
+            <min>4.17</min>
+        </core_version>
+    </compatibility>
+    <autoload>
+        <psr4 prefix="Tygh\Addons\AllowOnce\">src</psr4>
+    </autoload>
+    <installer>\Tygh\Addons\AllowOnce\Installer</installer>
+    <bootstrap>\Tygh\Addons\AllowOnce\Bootstrap</bootstrap>
+    <queries>
+        <item for="install">
+            ALTER TABLE ?:products ADD COLUMN allow_once INT(1) UNSIGNED NULL DEFAULT '2';
+        </item>
+        <item for="uninstall">
+            ALTER TABLE ?:products DROP COLUMN allow_once;
+        </item>
+    </queries>
+</addon>

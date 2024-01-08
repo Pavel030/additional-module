@@ -1,0 +1,38 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cs-cart-latest\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Uzbek\n"
+"Language: uz_UZ\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: cs-cart-latest\n"
+"X-Crowdin-Project-ID: 50163\n"
+"X-Crowdin-Language: uz\n"
+"X-Crowdin-File: /release-4.17.1/upgrade.po\n"
+"X-Crowdin-File-ID: 7831\n"
+"PO-Revision-Date: 2023-08-31 12:46\n"
+
+msgctxt "Languages::upgrade_notification.replace_google_fonts.title"
+msgid "You can now use Google Fonts locally for better GDPR compliance"
+msgstr ""
+
+msgctxt "Languages::upgrade_notification.replace_google_fonts.message"
+msgid "Google Fonts is an online library that allows site owners to easily use any of the hundreds of fonts. A German court decreed that Google Fonts must be stored locally to comply with GDPR (a European law on protection of personal data). As a result, fraudsters have already tried to extort money from site owners who didn't store the fonts locally.</br></br>To prevent situations when someone asks you for money or threatens to go to court because of Google Fonts, you can now store the fonts locally. To do it, just press the button below. After you do it, check the storefront to ensure that everything looks ok. If there are any issues, it could be because the server doesn't support the woff2 font format.</br></br><a class=\"cm-ajax btn btn-primary\" href=\"[url]\">Use local fonts</a>"
+msgstr ""
+
+msgctxt "Languages::upgrade_notification.sdek_rates_updated.title"
+msgid "SDEK rates updated; update your shipping methods"
+msgstr ""
+
+msgctxt "Languages::upgrade_notification.sdek_rates_updated.message"
+msgid "SDEK recently updated its plans; this caused some of your SDEK shipping methods to stop working. In CS-Cart 4.17.1 we've updated the list of SDEK plans and disabled the SDEK shipping methods that stopped working. If any SDEK shipping method is disabled, please configure it again and select a suitable plan.</br></br><a class=\"btn btn-primary\" target=\"_blank\" href=\"[url]\">To shipping methods</a>"
+msgstr ""
+
+msgctxt "Languages::upgrade_notification.usps_packages_change.title"
+msgid "USPS: First-Class Package changed to Ground Advantage"
+msgstr ""
+
+msgctxt "Languages::upgrade_notification.usps_packages_change.message"
+msgid "The United States Postal Service has merged its First-Class Package service into Ground Advantage. You had some shipping methods that used First-Class Package, so we've changed them to Ground Advantage during the upgrade. Please check your USPS shipping methods and make sure that they are configured properly and work as you need.</br></br><a class=\"btn btn-primary\" target=\"_blank\" href=\"[url]\">To shipping methods</a>"
+msgstr ""
+

@@ -1,0 +1,38 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cs-cart-latest\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language-Team: Russian\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
+"X-Crowdin-Project: cs-cart-latest\n"
+"X-Crowdin-Project-ID: 50163\n"
+"X-Crowdin-Language: ru\n"
+"X-Crowdin-File: /release-4.17.1/upgrade.po\n"
+"X-Crowdin-File-ID: 7831\n"
+"PO-Revision-Date: 2023-08-31 12:45\n"
+
+msgctxt "Languages::upgrade_notification.replace_google_fonts.title"
+msgid "You can now use Google Fonts locally for better GDPR compliance"
+msgstr "Теперь вы можете использовать Google Fonts локально для лучшего соответствия GDPR"
+
+msgctxt "Languages::upgrade_notification.replace_google_fonts.message"
+msgid "Google Fonts is an online library that allows site owners to easily use any of the hundreds of fonts. A German court decreed that Google Fonts must be stored locally to comply with GDPR (a European law on protection of personal data). As a result, fraudsters have already tried to extort money from site owners who didn't store the fonts locally.</br></br>To prevent situations when someone asks you for money or threatens to go to court because of Google Fonts, you can now store the fonts locally. To do it, just press the button below. After you do it, check the storefront to ensure that everything looks ok. If there are any issues, it could be because the server doesn't support the woff2 font format.</br></br><a class=\"cm-ajax btn btn-primary\" href=\"[url]\">Use local fonts</a>"
+msgstr "Google Fonts — это онлайн-библиотека, позволяющая владельцам сайтов легко использовать любой из сотен шрифтов. Немецкий суд постановил, что шрифты Google должны храниться локально в соответствии с GDPR (европейским законом о защите персональных данных). Мошенники уже пытались вымогать деньги у владельцев сайтов, которые не хранили шрифты локально.</br></br> Чтобы избежать ситуации, когда кто-то просит у вас деньги или угрожает обратиться в суд из-за Google Fonts, теперь вы можете хранить шрифты локально. Для этого просто нажмите кнопку ниже. После этого проверьте витрину магазина и убедитесь, что всё выглядит хорошо. Проблемы могут возникнуть, если сервер не поддерживает формат шрифта woff2.</br></br><a class=\"cm-ajax btn btn-primary\" href=\"[url]\">Использовать локальные шрифты</a>"
+
+msgctxt "Languages::upgrade_notification.sdek_rates_updated.title"
+msgid "SDEK rates updated; update your shipping methods"
+msgstr "Обновлены тарифы СДЭК; обновите ваши способы доставки"
+
+msgctxt "Languages::upgrade_notification.sdek_rates_updated.message"
+msgid "SDEK recently updated its plans; this caused some of your SDEK shipping methods to stop working. In CS-Cart 4.17.1 we've updated the list of SDEK plans and disabled the SDEK shipping methods that stopped working. If any SDEK shipping method is disabled, please configure it again and select a suitable plan.</br></br><a class=\"btn btn-primary\" target=\"_blank\" href=\"[url]\">To shipping methods</a>"
+msgstr "Недавно СДЭК обновил свои тарифы, и некоторые из ваших способов доставки СДЭК перестали работать. В версии CS-Cart 4.17.1 мы обновили список тарифов СДЭК и выключили нерабочие способы доставки. Если способ доставки СДЭК выключен, настройте его снова и выберите подходящий тариф.</br></br></br><a class=\"btn btn-primary\" target=\"_blank\" href=\"[url]\">К способам доставки</a>"
+
+msgctxt "Languages::upgrade_notification.usps_packages_change.title"
+msgid "USPS: First-Class Package changed to Ground Advantage"
+msgstr "USPS: Служба \"First-Class Package\" заменена на \"Ground Advantage\""
+
+msgctxt "Languages::upgrade_notification.usps_packages_change.message"
+msgid "The United States Postal Service has merged its First-Class Package service into Ground Advantage. You had some shipping methods that used First-Class Package, so we've changed them to Ground Advantage during the upgrade. Please check your USPS shipping methods and make sure that they are configured properly and work as you need.</br></br><a class=\"btn btn-primary\" target=\"_blank\" href=\"[url]\">To shipping methods</a>"
+msgstr "Почтовая служба Соединенных Штатов (USPS) сделала тариф \"First-Class Package\" частью другого тарифа \"Ground Advantage\". У вас были способы доставки, в которых использовался тариф \"First-Class Package\"; поэтому при обновлении мы поменяли в них тариф на \"Ground Advantage\". Проверьте ваши способы доставки USPS и убедитесь, что они настроены правильно и работают так, как вам нужно.</br></br><a class=\"btn btn-primary\" target=\"_blank\" href=\"[url]\">К способам доставки</a>"
+

@@ -54,8 +54,10 @@ class CheckoutHookHandler
             if ($already_ordered_group_id) {
                 $msg = __('this_or_similar');
             }
-            $product_data = [];
-            fn_set_notification('N', __('notice'), $msg, 'I');
+            if (isset($msg)){
+                fn_set_notification('N', __('notice'), $msg, 'I');
+                $product_data = [];
+            }
         }
         return $product_data;
     }

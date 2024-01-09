@@ -39,15 +39,17 @@ class WishlistHookHandler
 
         $already_ordered = $allow_once->already_ordered($auth, $product_data);
         $allow_once_mode = $allow_once->get_allow_once_mode((int)array_key_first($product_data));
-        if (in_array($allow_once_mode, [2, 3]) and !$already_ordered) {
-            $msg = __('cannot_add_to_wishlist');
-            $product_data = [];
-        } elseif (in_array($allow_once_mode, [2, 3]) and $already_ordered) {
-            $msg = __('cannot_add_to_wishlist_and_ordered');
-            $product_data = [];
+        if (in_array($allow_once_mode, [2, 3])) {
+            if (!$already_ordered) {
+                $msg = __('cannot_add_to_wishlist');
+            } else {
+                $msg = __('cannot_add_to_wishlist_and_ordered');
+            }
+            if (isset($msg)){
+                fn_set_notification('N', __('notice'), $msg, 'I');
+                $product_data = [];
+            }
         }
-        fn_set_notification('N', __('notice'), $msg, 'I');
-
         return $product_data;
     }
 }

@@ -80,7 +80,7 @@ class AllowOnce
      */
     public function get_allow_once_mode(int $product_id): bool
     {
-        $allow_once_mode = 1;
+        $allow_once_mode = 2;
 
         if (!empty($product_id)) {
             $allow_once_mode = $this->db->getField("SELECT allow_once FROM ?:products WHERE product_id = ?i", $product_id);

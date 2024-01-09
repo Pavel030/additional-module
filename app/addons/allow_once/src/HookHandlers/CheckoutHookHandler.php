@@ -44,24 +44,18 @@ class CheckoutHookHandler
         if ($allow_once_mode == 2) {
             if ($already_in_cart and !$already_ordered) {
                 $msg = __('already_added_to_cart');
-                fn_set_notification('N', __('notice'), $msg, 'I');
-                $product_data = [];
             }
             if ($already_ordered and $already_in_cart) {
                 $msg = __('this_or_similar');
-                fn_set_notification('N', __('notice'), $msg, 'I');
-                $product_data = [];
             }
             if ($already_ordered and !$already_in_cart) {
                 $msg = __('this_or_similar');
-                fn_set_notification('N', __('notice'), $msg, 'I');
-                $product_data = [];
             }
             if ($already_ordered_group_id) {
                 $msg = __('this_or_similar');
-                fn_set_notification('N', __('notice'), $msg, 'I');
-                $product_data = [];
             }
+            $product_data = [];
+            fn_set_notification('N', __('notice'), $msg, 'I');
         }
         return $product_data;
     }

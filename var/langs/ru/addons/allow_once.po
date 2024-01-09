@@ -40,3 +40,7 @@ msgstr "Только добавление в избранное"
 msgctxt "Languages::cannot_add_to_wishlist"
 msgid "Sorry dear, temporary you can't add it to wishlist"
 msgstr "Извините временно вы не можете добавлять этот товар в желаемое"
+
+msgctxt "Languages::cannot_add_to_wishlist_and_ordered"
+msgid "Sorry dear, temporary you can't add it to wishlist, product was ordered before"
+msgstr "Извините временно вы не можете добавлять этот товар в желаемое. Товар уже был куплен"

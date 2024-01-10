@@ -13,6 +13,9 @@ class AllowOnce
 {
     protected $db;
 
+    /**
+     * @param Application $app Application instance
+     */
     public function __construct(Application $app)
     {
         $this->db = $app['db'];

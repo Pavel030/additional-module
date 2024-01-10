@@ -29,28 +29,28 @@ class WishlistHookHandler
      * and purchase history. Notifications are assigned depending on the flags
      * and mode of the module.
      *
-     * @param array $product_data What the user is trying to add
+     * @param array $productData What the user is trying to add
      *
      * @return array
      */
-    public function onPreAddToWishlist(&$product_data, $wishlist, $auth)
+    public function onPreAddToWishlist(&$productData, $wishlist, $auth)
     {
-        $allow_once = ServiceProvider::getAllowOnce();
+        $allowOnce = ServiceProvider::getAllowOnce();
 
-        $already_ordered = $allow_once->already_ordered($auth, $product_data);
-        $allow_once_mode = $allow_once->get_allow_once_mode((int)array_key_first($product_data));
-        if (in_array($allow_once_mode, [2, 3])) {
-            if (!$already_ordered) {
+        $alreadyOrdered = $allowOnce->alreadyOrdered($auth, $productData);
+        $allowOnceMode = $allowOnce->getAllowOnceMode((int)array_key_first($productData));
+        if (in_array($allowOnceMode, [2, 3])) {
+            if (!$alreadyOrdered) {
                 $msg = __('cannot_add_to_wishlist');
             } else {
                 $msg = __('cannot_add_to_wishlist_and_ordered');
             }
             if (isset($msg)){
                 fn_set_notification('N', __('notice'), $msg, 'I');
-                $product_data = [];
+                $productData = [];
             }
         }
-        return $product_data;
+        return $productData;
     }
 }
 

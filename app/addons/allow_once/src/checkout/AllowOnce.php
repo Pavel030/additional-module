@@ -24,112 +24,112 @@ class AllowOnce
     /**
      * Getting a list of product's ids that the user has ever ordered
      *
-     * @param null|int $userId Current user's id
+     * @param null|int $user_id Current user's id
      *
      * @return array
      */
-    public function getOrderedProductsIds(int $userId): array
+    public function getOrderedProductsIds(int $user_id): array
     {
-        if (!empty($userId)) {
-            $conditions = $this->db->quote(' AND user_id = ?i', $userId);
+        if (!empty($user_id)) {
+            $conditions = $this->db->quote(' AND user_id = ?i', $user_id);
             $conditions .= $this->db->quote(' AND status <> ?s', 'D');
             $join = $this->db->quote(" JOIN ?:orders ON ?:order_details.order_id = ?:orders.order_id");
 
-            $productsIds[] = $this->db->getColumn("SELECT DISTINCT product_id FROM ?:order_details ?p WHERE 1 ?p", $join, $conditions);
+            $products_ids[] = $this->db->getColumn("SELECT DISTINCT product_id FROM ?:order_details ?p WHERE 1 ?p", $join, $conditions);
         }
-        return $productsIds;
+        return $products_ids;
     }
 
     /**
      * Getting a variation group_id by product_id
      *
-     * @param null|int $productId Current product's id
+     * @param null|int $product_id Current product's id
      *
      * @return array|int
      */
-    public function getVariationGroupId(int $productId)
+    public function getVariationGroupId(int $product_id)
     {
-        if (!empty($productId)) {
-            $variationGroupId = $this->db->getField("SELECT group_id FROM ?:productVariationGroup_products WHERE product_id = ?i", $productId);
+        if (!empty($product_id)) {
+            $variation_group_id = $this->db->getField("SELECT group_id FROM ?:product_variation_group_products WHERE product_id = ?i", $product_id);
         }
-        return $variationGroupId;
+        return $variation_group_id;
     }
 
     /**
      * Getting a variation group_id by product_id
      *
-     * @param null|int $productId Current product's id
+     * @param null|int $product_id Current product's id
      *
      * @return array|int
      */
-    public function getPrevVariationGroupIds(int $userId)
+    public function getPrevVariationGroupIds(int $user_id)
     {
-        if (!empty($userId)) {
-            $conditions = $this->db->quote(' AND user_id = ?i', $userId);
+        if (!empty($user_id)) {
+            $conditions = $this->db->quote(' AND user_id = ?i', $user_id);
             $conditions .= $this->db->quote(' AND status <> ?s', 'D');
             $join = $this->db->quote(" JOIN ?:order_details od ON pv.product_id = od.product_id");
             $join .= $this->db->quote(" JOIN ?:orders o ON od.order_id = o.order_id");
-            $prevVariationGroupIds = $this->db->getColumn("SELECT DISTINCT pv.group_id FROM ?:productVariationGroup_products pv ?p WHERE 1 ?p", $join, $conditions);
+            $prev_variation_group_ids = $this->db->getColumn("SELECT DISTINCT pv.group_id FROM ?:product_variation_group_products pv ?p WHERE 1 ?p", $join, $conditions);
         }
-        return $prevVariationGroupIds;
+        return $prev_variation_group_ids;
     }
 
     /**
      * Checks whether the module is activated for the current product
      *
-     * @param int $productId Current product's id
+     * @param int $product_id Current product's id
      *
      * @return bool
      */
-    public function getAllowOnceMode(int $productId): bool
+    public function getAllowOnceMode(int $product_id): bool
     {
-        $allowOnceMode = 2;
+        $allow_once_mode = 2;
 
-        if (!empty($productId)) {
-            $allowOnceMode = $this->db->getField("SELECT allow_once FROM ?:products WHERE product_id = ?i", $productId);
+        if (!empty($product_id)) {
+            $allow_once_mode = $this->db->getField("SELECT allow_once FROM ?:products WHERE product_id = ?i", $product_id);
         }
-        return $allowOnceMode;
+        return $allow_once_mode;
     }
 
     /**
      * Checks if the current product is in the cart
      *
      * @param array $cart Info about current cart state
-     * @param array $productData Preliminary product information
+     * @param array $product_data Preliminary product information
      *
      * @return bool
      */
-    public function alreadyInCart(array $cart, array $productData): bool
+    public function alreadyInCart(array $cart, array $product_data): bool
     {
-        $alreadyAddedToCart = false;
+        $already_added_to_cart = false;
 
-        $productId = (int) ($productData ? array_key_first($productData) : null);
+        $product_id = (int) ($product_data ? array_key_first($product_data) : null);
 
-        $alreadyAddedToCart = in_array($productId, array_column($cart['products'], 'product_id'));
+        $already_added_to_cart = in_array($product_id, array_column($cart['products'], 'product_id'));
 
-        return $alreadyAddedToCart;
+        return $already_added_to_cart;
     }
 
     /**
      * Checks whether this particular product has been purchased previously
      *
      * @param array $auth Extensive user information
-     * @param array $productData Preliminary product information
+     * @param array $product_data Preliminary product information
      *
      * @return bool
      */
-    public function alreadyOrderedProductId(array $auth, array $productData): bool
+    public function alreadyOrderedProductId(array $auth, array $product_data): bool
     {
         $result = false;
-        $alreadyUsedProductId = false;
-        $orderedProductsIds = $this->getOrderedProductsIds($auth['user_id']);
-        foreach ($productData as $key => $data) {
-            $productId = (int)$data['product_id'];
-            foreach ($orderedProductsIds as $orderedProductsId) {
-                $alreadyUsedProductId[] = in_array($productId, $orderedProductsId);
+        $already_used_product_id = false;
+        $ordered_product_ids = $this->getOrderedProductsIds($auth['user_id']);
+        foreach ($product_data as $key => $data) {
+            $product_id = (int)$data['product_id'];
+            foreach ($ordered_product_ids as $ordered_product_ids) {
+                $already_used_product_id[] = in_array($product_id, $ordered_product_ids);
             }
         }
-        if (in_array(true, $alreadyUsedProductId)) {
+        if (in_array(true, $already_used_product_id)) {
             $result = true;
         }
         return $result;
@@ -139,26 +139,26 @@ class AllowOnce
      * Checks the current product for alignment with the variation groups affected by previous orders
      *
      * @param array $auth Extensive user information
-     * @param array $productData Preliminary product information
+     * @param array $product_data Preliminary product information
      *
      * @return bool
      */
-    public function alreadyOrderedGroupId($auth, $productData): bool
+    public function alreadyOrderedGroupId($auth, $product_data): bool
     {
-        $alreadyOrderedGroupId = false;
+        $already_ordered_group_id = false;
 
-        foreach ($productData as $key => $data) {
-            $productId = (int) $data['product_id'];
-            $currentProductVariationGroup[] = $this->getVariationGroupId($productId);
+        foreach ($product_data as $key => $data) {
+            $product_id = (int) $data['product_id'];
+            $current_product_variation_group[] = $this->getVariationGroupId($product_id);
         }
 
-        $alreadyOrderedVariationGroup = $this->getPrevVariationGroupIds($auth['user_id']);
+        $already_ordered_variation_group = $this->getPrevVariationGroupIds($auth['user_id']);
 
-        if (!empty(array_intersect($currentProductVariationGroup, $alreadyOrderedVariationGroup)) && array_sum(array_filter($currentProductVariationGroup)) != 0) {
-            $alreadyOrderedGroupId = true;
+        if (!empty(array_intersect($current_product_variation_group, $already_ordered_variation_group)) && array_sum(array_filter($current_product_variation_group)) != 0) {
+            $already_ordered_group_id = true;
         }
         
-        return $alreadyOrderedGroupId;
+        return $already_ordered_group_id;
     }
 
     /**
@@ -167,14 +167,14 @@ class AllowOnce
      * 2. checking for the use of product id from completed orders
      *
      * @param array $auth Extensive user information
-     * @param array $productData Preliminary product information
+     * @param array $product_data Preliminary product information
      *
      * @return bool
      */
-    public function alreadyOrdered(array $auth, array $productData): bool
+    public function alreadyOrdered(array $auth, array $product_data): bool
     {
-        $alreadyOrderedGroupId = $this->alreadyOrderedGroupId($auth, $productData);
-        $alreadyOrderedProductId = $this->alreadyOrderedProductId($auth, $productData);
-        return $alreadyOrderedGroupId or $alreadyOrderedProductId;
+        $already_ordered_group_id = $this->alreadyOrderedGroupId($auth, $product_data);
+        $already_ordered_product_id = $this->alreadyOrderedProductId($auth, $product_data);
+        return $already_ordered_group_id or $already_ordered_product_id;
     }
 }

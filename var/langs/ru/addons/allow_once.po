@@ -7,11 +7,11 @@ msgstr ""
 
 msgctxt "Addons::name::allow_once"
 msgid "Restriction on the sale of goods"
-msgstr "Ограничение продажи товаров"
+msgstr "Ограничение добавления товаров"
 
 msgctxt "Addons::description::allow_once"
 msgid "The addon restricts the user from purchasing and adding a product to the cart if the product has been purchased or has already been added"
-msgstr "Аддон ограничивает покупку и добавление в корзину товара пользователем, если продукт был куплен или добавлен в корзину"
+msgstr "Аддон ограничивает добавление в корзину товара пользователем, если продукт был куплен или добавлен в корзину"
 
 msgctxt "Languages::already_added_to_cart"
 msgid "Sorry, temporarily you can only add one product"
@@ -23,7 +23,7 @@ msgstr "Извините, вы уже покупали этот или похо�
 
 msgctxt "Languages::allow_once_label"
 msgid "Module Restriction on the sale of goods. Permit:"
-msgstr "Режим модуля Ограничение продажи товаров. Разрешать:"
+msgstr "Режим модуля Ограничение добавления товаров. Разрешать:"
 
 msgctxt "Languages::all_actions"
 msgid "All actions"
